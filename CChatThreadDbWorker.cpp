@@ -30,7 +30,7 @@ CChatThreadDbWorker::~CChatThreadDbWorker()
 
 void CChatThreadDbWorker::SetData(int id, HWND hWnd)
 {
-	CSingleLock lock(&m_mutex, TRUE); // Блокирует вызов функции до её завершения
+	CSingleLock lock(&m_mutex, TRUE); // ГЃГ«Г®ГЄГЁГ°ГіГҐГІ ГўГ»Г§Г®Гў ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г® ГҐВё Г§Г ГўГҐГ°ГёГҐГ­ГЁГї
 	m_id = id;
 	m_hWnd = hWnd;
 }
@@ -70,7 +70,7 @@ void CChatThreadDbWorker::RunChat()
 		}
 
 		m_mutex.Lock();
-		HWND hWnd = m_hWnd; // Берем актуальный HWND
+		HWND hWnd = m_hWnd; // ГЃГҐГ°ГҐГ¬ Г ГЄГІГіГ Г«ГјГ­Г»Г© HWND
 		m_mutex.Unlock();
 
 		if (hWnd)
@@ -92,8 +92,6 @@ void CChatThreadDbWorker::StopThread()
 	}
 
 	m_bStop = TRUE;
-	delete pThreadInstance;
-	pThreadInstance = nullptr;
 }
 
 CString CChatThreadDbWorker::queryDataBase(int id)
